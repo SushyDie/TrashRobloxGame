@@ -1,0 +1,254 @@
+--AUT BUILD GUI
+
+--there nothing to see here for now, it's just GUI things, it is useless to save or to try to find information about the script. that's why it's not obfuscated
+
+--Setup lib
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = " BABFT AutoBuild | BETA: 9D1M23Y ",
+    LoadingTitle = "AutoBuild",
+    LoadingSubtitle = "For Build A Boat For Treasure",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil, 
+       FileName = "Big Hub"
+    },
+    Discord = {
+       Enabled = false,
+       Invite = "ABCD", 
+       RememberJoins = true 
+    },
+    KeySystem = true,
+    KeySettings = {
+       Title = "BABFT AutoBuild",
+       Subtitle = "BETA: 9D1M23Y",
+       Note = "The keys is: 1234, cause it's still in beta.",
+       FileName = "SiriusKey",
+       SaveKey = true,
+       GrabKeyFromSite = false,
+       Key = "1234"
+    }
+ })
+
+ --variables
+ _G.selectedfile = true
+ _G.UserName = true
+ _G.XZIncreasement = true
+ _G.YIncreasement = true
+
+ --functions
+
+ --tab
+ local Filedirectory = Window:CreateTab("File directory", 7059346386)
+ local stealbuild = Window:CreateTab("steal build", 7059346386)
+ local calibrate = Window:CreateTab("calibrate", 7059346386)
+ local about = Window:CreateTab("About", 7059346386)
+
+ --File directory
+ local section1 = Filedirectory:CreateSection("Saved File")
+
+local Input = Filedirectory:CreateInput({
+   Name = "enter the name of the file",
+   PlaceholderText = "file name",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(Text)
+        _G.selectedfile = Text
+   end,
+})
+
+local Dropdown = Filedirectory:CreateDropdown({
+   Name = "navigate through your files",
+   Options = {"preview1","preview2","preview3","preview4","preview5","preview6","preview7","preview8"},
+   CurrentOption = "preview1",
+   Flag = "selectedfiles",
+   Callback = function(Option)
+    _G.selectedfile = Option
+   end,
+})
+
+local Paragraph = Filedirectory:CreateParagraph({Title = "How to use:", Content = "In this tab, you will be able to access all your builds saved in the 'BABFT AutoBuild' folder in the workspace of your executor, if you steal a build in game, it will be directly put in this folder.          (example: preview1.bab)"})
+local Paragraph = Filedirectory:CreateParagraph({Title = "how to put an external file in this script :", Content = "To use an external file (example: file.bab) you will need to go to the 'workspace' folder of your executor and then to the 'BABFT AutoBuild' folder, put your file there and the script will do the rest."})
+
+local Section2 = Filedirectory:CreateSection("build")
+
+local Button = Filedirectory:CreateButton({
+   Name = "Preview",
+   Callback = function()
+
+   end,
+})
+
+local Button = Filedirectory:CreateButton({
+    Name = "Load build",
+    Callback = function()
+
+    end,
+ })
+
+ local Paragraph = Filedirectory:CreateParagraph({Title = "note", Content = "tapping on the preview button is recommended, to show what the build will look like when finished, it will allow you to calibrate the location of the build with the 'calibration' tab, you can then tap on 'load'."})
+
+--steal build
+local Section3 = stealbuild:CreateSection("Victim")
+
+local Input = stealbuild:CreateInput({
+    Name = "enter the name of the victim",
+    PlaceholderText = "victim",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Text)
+        _G.UserName = Text
+    end,
+ })
+ 
+ local Dropdown = stealbuild:CreateDropdown({
+    Name = "find the name of the victim ",
+    Options = {"preview1","preview2","preview3","preview4","preview5","preview6","preview7"},
+    CurrentOption = "preview1",
+    Flag = "selectedvictim",
+    Callback = function(Option)
+        _G.UserName = Text
+    end,
+ })
+
+ local Paragraph = stealbuild:CreateParagraph({Title = "note", Content = "write the name you want of the file for this build, this will identify it, do not use an existing name."})
+
+local Section4 = stealbuild:CreateSection("saving system")
+
+ local Input = stealbuild:CreateInput({
+    Name = "name of the build",
+    PlaceholderText = "filename",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Text)
+        _G.UserName = Text
+    end,
+ })
+
+local Button = stealbuild:CreateButton({
+   Name = "Save the build",
+   Callback = function()
+ 
+   end,
+})
+
+local Paragraph = stealbuild:CreateParagraph({Title = "how it work?", Content = "the script uses variables to get the name of the player and the name you want for the queue, it will then look for all the blocks and their data that belong to this player and then store this data in a file"})
+
+--calibrate
+local Paragraph = calibrate:CreateParagraph({Title = "Important", Content = "it is advisable to press preview in the 'file directory' tab, wait for the preview to load and then calibrate the build with these buttons, then press 'load'."})
+
+local Section5 = calibrate:CreateSection("move X and Z axis")
+
+local Button = calibrate:CreateButton({
+    Name = "move right",
+    Callback = function()
+
+    end,
+ })
+
+ local Button = calibrate:CreateButton({
+    Name = "move left",
+    Callback = function()
+
+    end,
+ })
+
+ local Button = calibrate:CreateButton({
+    Name = "move Front ",
+    Callback = function()
+
+    end,
+ })
+
+ local Button = calibrate:CreateButton({
+    Name = "move back",
+    Callback = function()
+
+    end,
+ })
+
+local Slider = calibrate:CreateSlider({
+   Name = "increasement",
+   Range = {1, 100},
+   Increment = 1,
+   Suffix = "stud per tap",
+   CurrentValue = 10,
+   Flag = "SliderZX", 
+   Callback = function(Value)
+    _G.XZIncreasement = Value
+   end,
+})
+
+local Section6 = calibrate:CreateSection("move Y axis")
+
+local Button = calibrate:CreateButton({
+    Name = "move up",
+    Callback = function()
+
+    end,
+ })
+
+ local Button = calibrate:CreateButton({
+    Name = "move down",
+    Callback = function()
+        
+    end,
+ })
+
+ local Slider = calibrate:CreateSlider({
+    Name = "increasement",
+    Range = {1, 100},
+    Increment = 1,
+    Suffix = "stud per tap",
+    CurrentValue = 10,
+    Flag = "SliderY",
+    Callback = function(Value)
+        _G.YIncreasement = Value
+    end,
+ })
+
+ local Section7 = calibrate:CreateSection("rotation X Y Z axis")
+
+ local Slider = calibrate:CreateSlider({
+    Name = "rotate X Z",
+    Range = {1, 100},
+    Increment = 1,
+    Suffix = "left to right",
+    CurrentValue = 10,
+    Flag = "SliderY",
+    Callback = function(Value)
+        _G.YIncreasement = Value
+    end,
+ })
+
+ local Slider = calibrate:CreateSlider({
+    Name = "rotate Y",
+    Range = {1, 100},
+    Increment = 1,
+    Suffix = "down to up",
+    CurrentValue = 10,
+    Flag = "SliderY",
+    Callback = function(Value)
+        _G.YIncreasement = Value
+    end,
+ })
+
+--About
+ local section8 = about:CreateSection("script")
+
+ local Paragraph = about:CreateParagraph({Title = "BETA 9D1M23Y", Content = "This is the first version of this script, only the graphical interface is available for the moment, the script is still in progress."})
+
+ local Paragraph = about:CreateParagraph({Title = "next feature.s", Content = "release the script that allows to detect for the blocks and their data to a player to store them in a file. release the script that allows you to search for blocks and give them to a player and store them in a queue. For the first version of the 'block finder' I would leave all the prints active, so you can see what the script is doing by pressing F9."})
+
+ local Paragraph = about:CreateParagraph({Title = "script capacity", Content = "allows to detect 143 different blocks and to store the following data: position, orientation, size, transparency, cancollide, color"})
+
+ local section9 = about:CreateSection("Owner")
+
+ local Paragraph = about:CreateParagraph({Title = "Creator", Content = "SushyDie#0001 is the creator of this script, suggest me things or help me if you have the ability. Don't ask me questions like 'how long will it take me to finish' or 'when will it be released'."})
+
+ local Button = about:CreateButton({
+    Name = "copy username",
+    Callback = function()
+    setclipboard("SushyDie#0001")
+    end,
+ })
+
+ local Paragraph = about:CreateParagraph({Title = "random things", Content = "I love cats, please give me some pictures of your cat if you have one."})
