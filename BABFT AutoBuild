@@ -46,6 +46,8 @@ local Window = Rayfield:CreateWindow({
  local about = Window:CreateTab("About", 7059346386)
 
  --File directory
+ local Label = Filedirectory:CreateLabel("ONLY GUI IS AVAILABLE, NOTHING WORK, IT'S JUST A PREVIEW")
+ 
  local section1 = Filedirectory:CreateSection("Saved File")
 
 local Input = Filedirectory:CreateInput({
